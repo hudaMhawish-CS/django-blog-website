@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{topic.subject}} {% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'home' %} ">الرئيسية</a> </li>
+    <li><a href="{% url 'board_topics' topic.board.pk%} ">{{topic.board.name}}</a> </li>
+    <li><a href="#">{{topic.subject}}</a></li>
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'reply_topic' topic.board.pk topic.pk%}" class="btn mb-2" style="background:brown;color:#FFF;margin-bottom:10px;">إضافة رأي</a>
+    {% for post in topic.posts.all %}
+    <div class="row topic-posts">
+        <div class="col-2">
+           <img src="{%static 'img/user.png' %}" alt="{{post.created_by_username}}" class="w-100">
+
+        </div>
+        <div class="col-7">
+           <p class="mt-2" style="color:brown;">{{topic.subject}}</p>
+           <p class="text-secondary">{{post.message}}</p>
+
+            {% if post.created_by == user %}
+                <a class="btn" style="background:brown;color:#FFF;margin-bottom:10px;" href="{% url 'edit_post' post.topic.board.pk post.topic.pk post.pk%}">تعديل</a>
+            {% endif %}
+        </div>
+        <div class="col-3 pt-4">
+            <p class="text-secondary">{{post.created_dt}}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

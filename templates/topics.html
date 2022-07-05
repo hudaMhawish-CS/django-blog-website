@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} {{board.name}} {% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'home' %} ">الرئيسية</a> </li>
+    <li><a href="#" >{{board.name}}</a></li>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'new_topic' board.pk %}" class="btn btn-primary" style="background:#ffc412;border:#e1b52ffa">نوع جديد</a>
+<table class="table mt-3">
+    <thead class="thead-dark">
+        <tr>
+            <th>النوع</th>
+            <th> اضيفت من قبل </th>
+            <th>الاَراء</th>
+            <th>المشاهدات</th>
+            <th>تاريخ الاضافة</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for topic in topics %}
+        <tr>
+            <td><a href="{% url 'topic_posts' board.pk topic.pk %}" >{{topic.subject}}</a></td>
+            <td>{{topic.created_by.username}}</td>
+            <td>{{topic.comments}}</td>
+            <td>{{topic.views}}</td>
+            <td>{{topic.created_dt}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<ul class="pagination" dir="ltr">
+  {% if topics.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{topics.previous_page_number}}" style="background:#ffc412; color:#FFF;border:1px solid #ffc412">Previous</a>
+    </li>
+  {% endif %}
+  {% for page_num in topics.paginator.page_range%}
+    {% if topics.number == page_num%}
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="#" style="background:#f7e5ae;color:#000;border:1px solid #ffc412">{{page_num}}</a>
+        </li>
+    {% else %}
+        <li class="page-item"><a class="page-link" href="?page={{page_num}}" style="color:#000;border:1px solid #ffc412">{{page_num}}</a></li>
+    {% endif %}
+  {% endfor %}
+  {% if topics.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{topics.next_page_number}}" style="background:#ffc412; color:#FFF;border:1px solid #ffc412">Next</a>
+    </li>
+  {%endif%}
+</ul>
+
+
+{% endblock %}

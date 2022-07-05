@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{topic.subject}} {% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'home' %} ">الرئيسية</a> </li>
+    <li><a href="{% url 'board_topics' topic.board.pk%} ">{{topic.board.name}}</a> </li>
+    <li><a href="{% url 'topic_posts' topic.board.pk topic.pk %}">{{topic.subject}}</a></li>
+    <li><a href="#">إضافة رأي</a></li>
+
+{% endblock %}
+
+{% block content %}
+   <form method="post" class="mb-4">{% csrf_token %}
+       <div class="new-topic">
+
+    <div class="form-group">
+        <label>رأي:</label>
+        <textarea name="message" id="id_message" rows="5" class="form-control"></textarea>
+    </div>
+    </div>
+     <button type="submit" class="btn mt-4" style="background:brown;">إضافة</button>
+
+   </form>
+{% for post in topic.posts.all %}
+    <div class="row border mt-3">
+        <div class="col-8 pt-4">
+           <p class="text-dark">{{post.created_by.username}}</p>
+           <p>{{post.message}}</p>
+        </div>
+        <div class="col-4 pt-4">
+            <p class="text-secondary">{{post.created_dt}}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

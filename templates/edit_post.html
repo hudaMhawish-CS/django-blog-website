@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Edit Post {% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'home' %} ">الرئيسية</a> </li>
+    <li><a href="{% url 'board_topics' post.topic.board.pk %}" >{{post.topic.board.name}}</a></li>
+    <li><a href="#">تعديل رأي</a></li>
+{% endblock %}
+
+{% block content %}
+   <form method="post" class="mb-4">{% csrf_token %}
+       <div class="new-topic">
+
+    <div class="form-group">
+        <label>رأي:</label>
+        <textarea name="message" id="id_message" rows="5" class="form-control"></textarea>
+    </div>
+    </div>
+     <button type="submit" class="btn mt-4" style="background:brown;">حفظ التغييرات</button>
+
+   </form>
+{% endblock %}

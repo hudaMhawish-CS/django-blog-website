@@ -1,0 +1,31 @@
+
+body {
+    background: #fbf4df
+}
+
+.signup {
+    width: 70%;
+    background: #FFF;
+    padding: 30px;
+    padding-top:5px;
+    padding-bottom: 10
+}
+.logo {
+    font-family: 'Peralta', cursive
+}
+.logo a {
+    text-decoration: none;
+    color: #edd079;
+
+}
+
+.signup input {
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
+.already{
+    background: #edd079;
+    width: 70%;
+
+}

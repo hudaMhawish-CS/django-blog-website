@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} حلويات سورية {% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="#">الرئيسية</a></li>
+{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead class="thead-dark">
+            <th>حلويات</th>
+            <th>اَراء</th>
+            <th>أشهر أنواعها</th>
+            <th>أحدث رأي</th>
+        </thead>
+
+        <tbody>
+            {% for board in boards %}
+                <tr>
+                    <td><a href="{% url 'board_topics' board.pk %}"> {{board.name}}</a>
+                    <small class="text-muted d-block">{{board.description}}</small>
+                    </td>
+                    <td>{{board.get_posts_count}}</td>
+                    <td>{{board.topics.count}}</td>
+                    <td>
+                        {% with post=board.get_last_post %}
+                        {% if post %}
+                            by {{post.created_by.username}} at {{post.created_dt}}
+                        {% else %}
+                            <small>No Posts</small>
+                        {%endif%}
+                        {%endwith%}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

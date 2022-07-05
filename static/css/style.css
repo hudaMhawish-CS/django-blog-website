@@ -1,0 +1,191 @@
+/************* Start navbar***********************/
+
+img.logo {
+    width: 100px;
+    height: 40px;
+}
+.navbar-nav .nav-link {
+    color: #121B22;
+}
+.navbar-nav .nav-link:hover {
+    color: #000;
+    box-shadow: 0px 0px 4px 1px #f7e5ae
+}
+/************* End navbar ************************/
+
+/************* Start home page ***********************/
+.boards .breadcrumb {
+    background: #f7e5ae;
+    padding: 10px
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+.breadcrumb {
+	list-style: none;
+	overflow: hidden;
+	font: 18px Helvetica, Arial, Sans-Serif;
+	text-direction:right;
+}
+.breadcrumb li {
+	float: right;
+}
+.breadcrumb li a {
+	color: white;
+	text-decoration: none;
+	padding: 10px 55px 10px 0;
+	background: brown;                   /* fallback color */
+	background: hsla(34,85%,35%,1);
+	position: relative;
+	display: block;
+	float: right;
+}
+.breadcrumb li a:after {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+	border-bottom: 50px solid transparent;
+	border-right: 30px solid hsla(34,85%,35%,1);
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	right: 100%;
+	z-index: 2;
+}
+.breadcrumb li a:before {
+	content: " ";
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;/* Go big on the size, and let overflow hide */
+	border-bottom: 50px solid transparent;
+	border-right: 30px solid #f7e5ae;
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	margin-right: 1px;
+	right: 100%;
+	z-index: 1;
+}
+.breadcrumb li:first-child a {
+	padding-right: 10px;
+}
+.breadcrumb li:nth-child(2) a       { background:				hsla(34,85%,45%,1); }
+.breadcrumb li:nth-child(2) a:after { border-right-color: hsla(34,85%,45%,1); }
+.breadcrumb li:nth-child(3) a       { background:        hsla(34,85%,55%,1); }
+.breadcrumb li:nth-child(3) a:after { border-right-color: hsla(34,85%,55%,1); }
+.breadcrumb li:nth-child(4) a       { background:        hsla(34,85%,65%,1); }
+.breadcrumb li:nth-child(4) a:after { border-right-color: hsla(34,85%,65%,1); }
+.breadcrumb li:nth-child(5) a       { background:        hsla(34,85%,75%,1); }
+.breadcrumb li:nth-child(5) a:after { border-right-color: hsla(34,85%,75%,1); }
+.breadcrumb li:last-child a {
+	background: #f7e5ae !important;
+	color: black;
+	pointer-events: none;
+ 			cursor: default;
+}
+.breadcrumb li:last-child a:after { border: 0; }
+.breadcrumb li a:hover { background: hsla(34,85%,25%,1); }
+.breadcrumb li a:hover:after { border-right-color: hsla(34,85%,25%,1) !important; }
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+
+.boards .table .thead-dark{
+    background:#121B22;
+    color: #f7e5ae
+}
+table.table > tbody > tr > td > a{
+    text-decoration: none;
+    color: #121B22;
+}
+table.table > tbody > tr > td > a:hover{
+    color: #dda707
+}
+/************* End home page ************************/
+
+
+/************** Start new-topic page ******************/
+form > div.new-topic > div.form-group > label {
+    color: #204254;
+    text-shadow: 1px 1px 1px #B94A3E;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+form > div.new-topic > div.form-group > input {
+    border: 1px solid brown;
+    box-shadow: 0px 0px 40px -3px #f7e5ae;
+    transition: all 0.4s ease-in-out;
+}
+form > div.new-topic > div.form-group > input:hover {
+    border: 2px solid brown;
+    box-shadow: none;
+}
+form > div.new-topic > div.form-group > textarea {
+    border: 1px solid brown;
+    box-shadow: 0px 0px 40px -3px #f7e5ae;
+    transition: all 0.4s ease-in-out;
+}
+form > div.new-topic > div.form-group > textarea:hover {
+    border: 2px solid brown;
+    box-shadow: none;
+}
+/************** end new-topic page ******************/
+
+/************** Start topic-posts page ******************/
+
+div.row.topic-posts {
+    border: 1px solid brown;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 40px -3px #f7e5ae;
+}
+/************** End topic-posts page ******************/
+
+/************** Start sweets page ******************/
+div.sweet > h2 {
+    color: #121b22;
+    text-shadow: 1px 1px 1px #B94A3E;
+}
+div.sweet > section {
+    border: 3px solid brown;
+    box-shadow: 0px 0px 40px -3px #f7e5ae;
+    padding: 20px;
+    transition: all 0.4s ease-in-out;
+    margin: 30px;
+}
+div.sweet > section:hover {
+    border: 3px solid #121B22;
+    box-shadow: none;
+}
+div.sweet > section > div.row > div.col-6 > p {
+    color: #121B22;
+    font-family: serif;
+    font-size: 21px;
+    margin: auto;
+}
+div.sweet > section > div.row > div.col-6 > p:hover {
+    color: brown;
+}
+div.sweet > section > div.row > div.col-6 > img {
+    box-shadow: 0px 0px 40px -3px #f7e5ae;
+    border: 0.3px solid brown;
+}
+div.sweet > section > div.row > div.col-6 > img:hover {
+    border: 1px solid #121B22;
+    box-shadow: none;
+    transition: all 0.4s ease-in-out;
+}
+/************** End sweets page ******************/
+
+/************** Start footer ******************/
+.footer-image{
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #EEE;
+    opacity: 0.8;
+    transition: all 0.4s ease-in-out;
+}
+.footer-image:hover{
+    box-shadow: 0px 0px 10px -3px #EEE;
+    opacity: 1;
+}
+/************** End footer ******************/

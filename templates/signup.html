@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+
+<h1 class="text-center logo my-4">
+            <a href="{% url 'home' %}" style="text-shadow: 1px 1px 1px #B94A3E;">الحلويات السورية</a>
+        </h1>
+<div class="container signup" dir="ltr">
+        <h3>Sign up</h3>
+        <span id="user_error" style="display:none"></span>
+        <form method="post" data-validate-username-url="{% url 'validate_username' %}">{% csrf_token %}
+            {% include 'includes/form.html' %}
+            <br/>
+            <button type="submit" class="btn btn-primary form-control mt-3" style="background: #204254; color: #FFF">Create New user</button>
+        </form>
+</div>
+ <div class="container already text-center py-2 border-top">
+     <p style="color:#204254">Already have an account? <a href="{% url 'login' %}" style="color: brown">Log in</a></p>
+ </div>
+{% endblock %}
+
+<!--         AJAX                 -->
+{% block javascript %}
+<script type="text/javascript">
+    $("#id_username").change(function(){
+        var username = $(this).val();
+        var form = $(this).closest("form");
+        $.ajax({
+            url:form.attr("data-validate-username-url"),
+            data:form.serialize(),
+            dataType: 'json',
+            success: function(data){
+                if (data.is_taken){
+                    $("#user_error").text(data.error_message);
+                    $("#user_error").css("display","block");
+                    $("#user_error").css("color","red");
+                }
+                else{
+                    $("#user_error").css("display","none");
+                }
+            }
+        });
+    });
+</script>
+{% endblock javascript%}
